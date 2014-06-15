@@ -1,0 +1,10 @@
+# Site settings
+title: Rocky Mountain Hang Gliding and Paragliding Association
+email: webmaster@rmhpa.org
+description: "RMHPA is a club for free flight pilots in Colorado."
+baseurl: ""
+url: "http://rmhpa.github.io/website/"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
