@@ -8,7 +8,21 @@ body {
   color: #5a5a5a;
 }
 
+.navbar-logo {
+   float: left;
+   color: #5a5a5a;
+}
 
+.logo-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  padding: 10px;
+  background: white;
+  border: 1px;
+}
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
