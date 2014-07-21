@@ -1,0 +1,16 @@
+Sorry about your heel bone. I hope it will heal quickly. I am working on WX forecasting, Current conditions, a WX tutorial, and flying site specific wx conditions to look for. As far as functionality goes, I will need:
+
+- Imported loops of satellite images and numerical models from the http://weather.rap.ucar.edu site.
+- Imported java applet from the http://rucsoundings.noaa.gov site.
+- Parsed text from METARs and TAFs, forecast discussion, and aviation winds aloft
+- Import the NWS forecast for individual flying sites (http://forecast.weather.gov)
+- Imported windalert.com frame for current conditions
+- Tutorials: Thumbnails that point to individual pages with tutorials including slide shows with examples.
+
+I would also like to throw my Lookout XC tutorial slide show as well as airspace maps, TFRs, and an airspace map tutorial on the web site.
+
+The two main issues I see right now are
+1. Space: We will need quiet a bit of space to host all the pictures for tutorial slideshows
+2. Creative Commons: Like Tim has mentioned for himself, I am not comfortable to create content that can easily be shared/spoofed by others.
+
+I will present my material at the meeting this Wedneday. See you there

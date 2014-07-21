@@ -1,19 +1,3 @@
----
-layout: page
-title: Weather - Big Picuture
-permalink: /new-weather-forecast/
----
-
-<h1>Forecast Discussion</h1>
-
-  <div>
-  <iframe src="http://forecast.weather.gov/product.php?site=NWS&issuedby=BOU&product=AFD&format=txt&version=3&glossary=1"
-      height="1500"
-      width="940">
-
-  </iframe></div>
-
-<script>
 var myApp = angular.module('myApp', ['infinite-scroll']);
 myApp.controller('WeatherController', function($scope) {
   $scope.images = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -25,4 +9,3 @@ myApp.controller('WeatherController', function($scope) {
     }
   };
 });
-</script>
