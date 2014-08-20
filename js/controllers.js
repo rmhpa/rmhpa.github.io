@@ -1,5 +1,5 @@
 var myApp = angular.module('myApp', ['infinite-scroll']);
-myApp.controller('WeatherController', function($scope) {
+myApp.controller('DemoController', function($scope) {
   $scope.images = [1, 2, 3, 4, 5, 6, 7, 8];
 
   $scope.loadMore = function() {
