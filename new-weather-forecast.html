@@ -13,6 +13,8 @@ permalink: /new-weather-forecast/
 
   </iframe></div>
 
+  <script src="../bower_components/angular/angular.js"></script>
+
 <script>
 var myApp = angular.module('myApp', ['infinite-scroll']);
 myApp.controller('WeatherController', function($scope) {
@@ -26,3 +28,13 @@ myApp.controller('WeatherController', function($scope) {
   };
 });
 </script>
+
+{% raw %}
+
+<div ng-app='myApp' ng-controller='WeatherController'>
+  <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
+    <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
+  </div>
+</div>
+
+{% endraw %}
