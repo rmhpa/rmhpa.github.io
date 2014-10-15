@@ -4,49 +4,73 @@ title: Weather - Big Picuture
 permalink: /new-weather-big-picture/
 ---
 
-<!-- Todo: Put in the time in UTC !!! -->
 
-<h1>Visible Water Vapor</h1>
-
-<p>Todo: work in loop like this url: http://weather.rap.ucar.edu/satellite/displaySat.php?region=DEN&itype=wv&size=small&endDate=20140721&endTime=-1&duration=5</p>
-<p>These files come from: http://weather.rap.ucar.edu/satellite/  It looks like you need to manually calculate endDate=20140721 Number is today's date </p>
-
-	<div>
-	<iframe src="http://weather.rap.ucar.edu/satellite/displaySat.php?region=US&isingle=multiple&itype=wv"
-			height="940"
-			width="940">
-
-	</iframe></div>
-
-<h1>Visible Water Vapor - Interactive</h1>
+<script>
 
 
+var myApp = angular.module('myApp', ['infinite-scroll']);
+myApp.controller('DemoController', function($scope) {
+	$scope.images = [1, 2, 3, 4, 5, 6, 7, 8];
+
+	$scope.loadMore = function() {
+		var last = $scope.images[$scope.images.length - 1];
+		for(var i = 1; i <= 8; i++) {
+			$scope.images.push(last + i);
+		}
+
+	};
+
+	$scope.weatherLinks = [
+		{name: 'Visible Water Vapor', imgUrl: 'http://weather.rap.ucar.edu/satellite/g13.2014288.0415_US_wv.jpg', siteUrl: 'http://weather.rap.ucar.edu/satellite/displaySat.php?region=US&isingle=multiple&itype=wv' },
+		{name: '500 Mb Big Picture', imgUrl: 'http://weather.rap.ucar.edu/upper/upaCNTR_500.gif' , siteUrl: 'http://weather.rap.ucar.edu/upper/upaCNTR_500.gif' },
+		{name: 'Jet Stream', imgUrl: 'http://squall.sfsu.edu/gif/jetstream_pac_init_00.gif' , siteUrl: 'http://squall.sfsu.edu/crws/jetstream.html'},
+		{name: '700 Mb Views', imgUrl: 'http://weather.rap.ucar.edu/model/ruc12hr_700_wnd.gif', siteUrl: 'http://weather.rap.ucar.edu/model/displayMod.php?var=ruc_700_wnd&loop=1' }
+		];
+
+	$scope.length = $scope.weatherLinks.length
+
+	$scope.loadMoreWeather = function() {
+		for(var i = 1; i <=$scope.length ; i++) {
+			$scope.weatherLinks.push($scope.weatherLinks[i]);
+		}
+	}
+
+
+});
+
+</script>
 
 
 
-<h1>500 MB Views</h1>
-	<div>
-	<iframe src="http://weather.rap.ucar.edu/upper/upaCNTR_500.gif"
-			height="940"
-			width="940">
+<!-- <div ng-app='myApp' ng-controller='DemoController'>
+	<div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
+		<img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
+	</div>
+</div> -->
+<hr>
 
-	</iframe>
+{% raw %}
+<div ng-app='myApp' ng-controller='DemoController'>
+<div infinite-scroll='loadMoreWeather()' infinite-scroll-distance='2'>
+	<!-- <div ng-repeat='link in weatherLinks track by $index'> -->
+	<div ng-repeat='link in weatherLinks'>
+			<h2>{{link.name}}</h2>
+			<div>
+				<a id="link-1" ng-href="{{link.siteUrl}}" target="_blank"> Original site for: {{link.name}} </a>
+			</div>
+			<div>
+				<img ng-src="{{link.imgUrl}}"
+			</div>
+			<hr>
+			<!-- <div><iframe ng-src='{{link.url}}'
+						height="540"
+						width="940" >
+
+			</iframe></div> -->
 	</div>
 
+	<!-- <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'> -->
+</div>
+</div>
 
-<caption></caption>
-
-
-
-<h1>700 MB Views</h1>
-
-	<div><iframe src="http://weather.rap.ucar.edu/model/displayMod.php?var=ruc_700_wnd&loop=1"
-				 height="940"
-				 width="940" >
-
-	</iframe></div>
-
-<caption>700 MB is about 9500 feet.  These can be thermal tops, or you can be climbing through this altitude. Watch for strong west winds.</caption>
-
-
-<p><a href="new-weather-forecast.html">Move On To the Forecast</a></p>
+{% endraw %}
