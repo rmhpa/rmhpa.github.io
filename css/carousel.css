@@ -135,7 +135,7 @@ body {
   height: 500px;
 }*/
 
-.carousel-inner > .item > img {
+/*.carousel-inner > .item > img {
   position: absolute;
   top: 0;
   left: 0;
@@ -143,6 +143,13 @@ body {
   height: 500px;
   max-width: none;
   object-fit: cover;
+}*/
+
+.carousel-inner > .item > img {
+max-width: 100%;
+width: auto;
+height: auto;
+vertical-align: middle;	
 }
 
 /* MARKETING CONTENT
