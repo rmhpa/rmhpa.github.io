@@ -142,7 +142,7 @@ body {
   min-width: 100%;
   height: 500px;
   max-width: none;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 /* MARKETING CONTENT
