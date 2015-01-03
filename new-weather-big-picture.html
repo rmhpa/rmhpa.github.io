@@ -23,7 +23,6 @@ myApp.controller('DemoController', function($scope) {
 	$scope.weatherLinks = [
 
 		{name: 'Jet Stream', imgUrl: 'http://squall.sfsu.edu/gif/jetstream_pac_init_00.gif' , siteUrl: 'http://squall.sfsu.edu/crws/jetstream.html'},
-		{name: 'Visible Water Vapor', imgUrl: 'http://weather.rap.ucar.edu/satellite/displaySat.php?region=DEN&itype=wv&size=large&endDate=20150102&endTime=-1&duration=0', siteUrl: 'http://weather.rap.ucar.edu/satellite/displaySat.php?region=US&isingle=multiple&itype=wv' },
 		{name: '500 Mb Big Picture', imgUrl: 'http://weather.rap.ucar.edu/upper/upaCNTR_500.gif' , siteUrl: 'http://weather.rap.ucar.edu/upper/upaCNTR_500.gif' },
 		{name: '700 Mb Views', imgUrl: 'http://weather.rap.ucar.edu/model/ruc12hr_700_wnd.gif', siteUrl: 'http://weather.rap.ucar.edu/model/displayMod.php?var=ruc_700_wnd&loop=1' }
 		];
@@ -50,6 +49,18 @@ myApp.controller('DemoController', function($scope) {
 </div> -->
 <hr>
 
+
+<h2>Visible Water Vapor</h2>
+
+<div><iframe src="http://weather.rap.ucar.edu/satellite/displaySat.php?region=DEN&itype=wv&size=large&endDate=20150103&endTime=-1&duration=12"
+height="1000"
+width="1200" >
+
+</iframe></div>
+
+
+<hr>
+
 {% raw %}
 <div ng-app='myApp' ng-controller='DemoController'>
 <div infinite-scroll='loadMoreWeather()' infinite-scroll-distance='2'>
@@ -64,8 +75,8 @@ myApp.controller('DemoController', function($scope) {
 			</div>
 			<hr>
 			<!-- <div><iframe ng-src='{{link.url}}'
-						height="540"
-						width="940" >
+						height="1000"
+						width="1200" >
 
 			</iframe></div> -->
 	</div>
