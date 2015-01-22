@@ -1,0 +1,205 @@
+---
+layout: weather
+title: Experimental Weather Layout
+permalink: /Experimental-Weather-Layout/
+---
+
+
+
+<div class"row">
+  <span class="octicon octicon-device-desktop"></span>
+  <span class="octicon octicon-flame"></span>
+</div>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>Jet Stream</h3>
+        </div><br><br>
+        <a href="http://squall.sfsu.edu/crws/jetstream.html" target="_blank">
+        <img src="http://squall.sfsu.edu/gif/jetstream_init_00.gif" alt="Jet Stream US" />
+        </a>
+        <!-- <img src="http://squall.sfsu.edu/gif/jetstream_pac_init_00.gif" alt="Jet Stream Pacific" > -->
+
+        <div class="caption">
+
+
+          <p>Jet Stream from the Pacific.  Here's what's coming</p>
+        </div>
+      </div>
+    </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3>500 MB Heights</h3>
+          </div>
+          <!-- <a href="#"></a> -->
+          <img src="http://weather.rap.ucar.edu/upper/upaCNTR_500.gif" alt="" />
+            <p>Wind and Precip at ~30,000 feet. </p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        </div>
+      </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3>700 MB Winds</h3>
+            </div>
+              <img src="http://weather.rap.ucar.edu/model/ruc12hr_700_wnd.gif" alt="700 MB Winds - USA" />
+              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="http://weather.rap.ucar.edu/model/displayMod.php?var=ruc_700_wnd&loop=loopall&hours=" class="btn btn-default" role="button"  target="_blank">Button</a></p>
+            </div>
+          </div>
+
+
+      </div>
+
+      <hr>
+
+<!-- Windyty layer -->
+
+
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <div class="caption">
+              300 MB Winds
+            </div>
+            <iframe src="https://embed.windyty.com/?300h,wind,now,39.910,-121.816,4," width="425" height="500" frameborder="0"></iframe>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <div class="caption">
+              500 MB Winds
+            </div>
+            <iframe src="https://embed.windyty.com/?500h,wind,now,38.925,-111.094,5," width="425" height="500" frameborder="0"></iframe>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <div class="caption">
+              750 MB Winds
+            </div>
+            <iframe src="https://embed.windyty.com/?750h,wind,now,39.673,-106.447,7," width="425" height="500" frameborder="0"></iframe>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <hr>
+
+      <!-- <div class="thumbnail">
+        <iframe src="http://weather.rap.ucar.edu/satellite/displaySat.php?region=DEN&itype=wv&size=large&endDate=20150103&endTime=-1&duration=12"
+        height="500"
+        width="500" >
+
+      </iframe>
+
+
+      </div> -->
+
+
+  </div>
+
+
+
+
+
+
+<hr>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    Panel content
+  </div>
+  <div class="panel-footer">Panel footer</div>
+</div>
+
+
+<hr>
+
+<script>
+
+
+var myApp = angular.module('myApp', ['infinite-scroll']);
+myApp.controller('DemoController', function($scope) {
+  // $scope.images = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  $scope.loadMore = function() {
+    var last = $scope.images[$scope.images.length - 1];
+    for(var i = 1; i <= 8; i++) {
+      $scope.images.push(last + i);
+    }
+
+  };
+
+  $scope.weatherLinks = [
+
+    {name: 'Jet Stream', imgUrl: 'http://squall.sfsu.edu/gif/jetstream_pac_init_00.gif' , siteUrl: 'http://squall.sfsu.edu/crws/jetstream.html'},
+    {name: '500 Mb Big Picture', imgUrl: 'http://weather.rap.ucar.edu/upper/upaCNTR_500.gif' , siteUrl: 'http://weather.rap.ucar.edu/upper/upaCNTR_500.gif' },
+    {name: '700 Mb Views', imgUrl: 'http://weather.rap.ucar.edu/model/ruc12hr_700_wnd.gif', siteUrl: 'http://weather.rap.ucar.edu/model/displayMod.php?var=ruc_700_wnd&loop=1' }
+    ];
+
+  $scope.length = $scope.weatherLinks.length
+
+  $scope.loadMoreWeather = function() {
+    for(var i = 1; i <=$scope.length ; i++) {
+      $scope.weatherLinks.push($scope.weatherLinks[i]);
+    }
+  }
+
+
+});
+
+</script>
+
+
+
+<!-- <div ng-app='myApp' ng-controller='DemoController'>
+  <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
+    <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
+  </div>
+</div> -->
+<hr>
+
+
+<h2>Visible Water Vapor</h2>
+
+<div><iframe src="http://weather.rap.ucar.edu/satellite/displaySat.php?region=DEN&itype=wv&size=large&endDate=20150103&endTime=-1&duration=12"
+height="1000"
+width="1200" >
+
+</iframe></div>
+
+
+<hr>
+
+{% raw %}
+<div ng-app='myApp' ng-controller='DemoController'>
+<div infinite-scroll='loadMoreWeather()' infinite-scroll-distance='2'>
+  <!-- <div ng-repeat='link in weatherLinks track by $index'> -->
+  <div ng-repeat='link in weatherLinks'>
+      <h2>{{link.name}}</h2>
+      <div>
+        <a id="link-1" ng-href="{{link.siteUrl}}" target="_blank"> Original site for: {{link.name}} </a>
+      </div>
+      <div>
+        <img ng-src="{{link.imgUrl}}"
+      </div>
+      <hr>
+      <!-- <div><iframe ng-src='{{link.url}}'
+            height="1000"
+            width="1200" >
+
+      </iframe></div> -->
+  </div>
+
+  <!-- <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'> -->
+</div>
+</div>
+
+{% endraw %}
