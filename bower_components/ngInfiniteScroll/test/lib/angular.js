@@ -3568,8 +3568,10 @@ var NON_ASSIGNABLE_MODEL_EXPRESSION = 'Non-assignable model expression: ';
       }
     </script>
     <div ng-controller="Ctrl">
-      <input ng-model="name"> <br>
-      <textarea ng-model="html"></textarea> <br>
+      <input ng-model="name"> 
+
+      <textarea ng-model="html"></textarea> 
+
       <div compile="html"></div>
     </div>
    </doc:source>
@@ -3595,7 +3597,8 @@ var NON_ASSIGNABLE_MODEL_EXPRESSION = 'Non-assignable model expression: ';
  *  * `cloneAttachFn` - If `cloneAttachFn` is provided, then the link function will clone the
  *               `template` and call the `cloneAttachFn` function allowing the caller to attach the
  *               cloned elements to the DOM document at the appropriate place. The `cloneAttachFn` is
- *               called as: <br> `cloneAttachFn(clonedElement, scope)` where:
+ *               called as: 
+ `cloneAttachFn(clonedElement, scope)` where:
  *
  *      * `clonedElement` - is a clone of the original `element` passed into the compiler.
  *      * `scope` - is the current scope with which the linking function is working with.
@@ -8980,7 +8983,8 @@ function $HttpProvider() {
               <option>JSONP</option>
             </select>
             <input type="text" ng-model="url" size="80"/>
-            <button ng-click="fetch()">fetch</button><br>
+            <button ng-click="fetch()">fetch</button>
+
             <button ng-click="updateModel('GET', 'http-hello.html')">Sample GET</button>
             <button ng-click="updateModel('JSONP', 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero')">Sample JSONP</button>
             <button ng-click="updateModel('JSONP', 'http://angularjs.org/doesntexist&callback=JSON_CALLBACK')">Invalid JSONP</button>
@@ -9829,10 +9833,14 @@ function $FilterProvider($provide) {
          <tr>
        </table>
        <hr>
-       Any: <input ng-model="search.$"> <br>
-       Name only <input ng-model="search.name"><br>
-       Phone only <input ng-model="search.phone"å><br>
-       Equality <input type="checkbox" ng-model="strict"><br>
+       Any: <input ng-model="search.$"> 
+
+       Name only <input ng-model="search.name">
+
+       Phone only <input ng-model="search.phone"å>
+
+       Equality <input type="checkbox" ng-model="strict">
+
        <table id="searchObjResults">
          <tr><th>Name</th><th>Phone</th><tr>
          <tr ng-repeat="friend in friends | filter:search:strict">
@@ -9994,8 +10002,10 @@ function filterFilter() {
          }
        </script>
        <div ng-controller="Ctrl">
-         <input type="number" ng-model="amount"> <br>
-         default currency symbol ($): {{amount | currency}}<br>
+         <input type="number" ng-model="amount"> 
+
+         default currency symbol ($): {{amount | currency}}
+
          custom currency identifier (USD$): {{amount | currency:"USD$"}}
        </div>
      </doc:source>
@@ -10045,9 +10055,12 @@ function currencyFilter($locale) {
          }
        </script>
        <div ng-controller="Ctrl">
-         Enter number: <input ng-model='val'><br>
-         Default formatting: {{val | number}}<br>
-         No fractions: {{val | number:0}}<br>
+         Enter number: <input ng-model='val'>
+
+         Default formatting: {{val | number}}
+
+         No fractions: {{val | number:0}}
+
          Negative number: {{-val | number:4}}
        </div>
      </doc:source>
@@ -10287,11 +10300,14 @@ var DATE_FORMATS_SPLIT = /((?:[^yMdHhmsaZE']+)|(?:'(?:[^']|'')*')|(?:E+|y+|M+|d+
    <doc:example>
      <doc:source>
        <span ng-non-bindable>{{1288323623006 | date:'medium'}}</span>:
-           {{1288323623006 | date:'medium'}}<br>
+           {{1288323623006 | date:'medium'}}
+
        <span ng-non-bindable>{{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}</span>:
-          {{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}<br>
+          {{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}
+
        <span ng-non-bindable>{{1288323623006 | date:'MM/dd/yyyy @ h:mma'}}</span>:
-          {{'1288323623006' | date:'MM/dd/yyyy @ h:mma'}}<br>
+          {{'1288323623006' | date:'MM/dd/yyyy @ h:mma'}}
+
      </doc:source>
      <doc:scenario>
        it('should format date', function() {
@@ -11308,12 +11324,18 @@ function FormController(element, attrs) {
        </script>
        <form name="myForm" ng-controller="Ctrl">
          userType: <input name="input" ng-model="userType" required>
-         <span class="error" ng-show="myForm.input.$error.required">Required!</span><br>
-         <tt>userType = {{userType}}</tt><br>
-         <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br>
-         <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br>
-         <tt>myForm.$valid = {{myForm.$valid}}</tt><br>
-         <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br>
+         <span class="error" ng-show="myForm.input.$error.required">Required!</span>
+
+         <tt>userType = {{userType}}</tt>
+
+         <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt>
+
+         <tt>myForm.input.$error = {{myForm.input.$error}}</tt>
+
+         <tt>myForm.$valid = {{myForm.$valid}}</tt>
+
+         <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt>
+
         </form>
       </doc:source>
       <doc:scenario>
@@ -12105,24 +12127,34 @@ function checkboxInputType(scope, element, attr, ctrl) {
          <form name="myForm">
            User name: <input type="text" name="userName" ng-model="user.name" required>
            <span class="error" ng-show="myForm.userName.$error.required">
-             Required!</span><br>
+             Required!</span>
+
            Last name: <input type="text" name="lastName" ng-model="user.last"
              ng-minlength="3" ng-maxlength="10">
            <span class="error" ng-show="myForm.lastName.$error.minlength">
              Too short!</span>
            <span class="error" ng-show="myForm.lastName.$error.maxlength">
-             Too long!</span><br>
+             Too long!</span>
+
          </form>
          <hr>
          <tt>user = {{user}}</tt><br/>
-         <tt>myForm.userName.$valid = {{myForm.userName.$valid}}</tt><br>
-         <tt>myForm.userName.$error = {{myForm.userName.$error}}</tt><br>
-         <tt>myForm.lastName.$valid = {{myForm.lastName.$valid}}</tt><br>
-         <tt>myForm.userName.$error = {{myForm.lastName.$error}}</tt><br>
-         <tt>myForm.$valid = {{myForm.$valid}}</tt><br>
-         <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br>
-         <tt>myForm.$error.minlength = {{!!myForm.$error.minlength}}</tt><br>
-         <tt>myForm.$error.maxlength = {{!!myForm.$error.maxlength}}</tt><br>
+         <tt>myForm.userName.$valid = {{myForm.userName.$valid}}</tt>
+
+         <tt>myForm.userName.$error = {{myForm.userName.$error}}</tt>
+
+         <tt>myForm.lastName.$valid = {{myForm.lastName.$valid}}</tt>
+
+         <tt>myForm.userName.$error = {{myForm.lastName.$error}}</tt>
+
+         <tt>myForm.$valid = {{myForm.$valid}}</tt>
+
+         <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt>
+
+         <tt>myForm.$error.minlength = {{!!myForm.$error.minlength}}</tt>
+
+         <tt>myForm.$error.maxlength = {{!!myForm.$error.maxlength}}</tt>
+
        </div>
       </doc:source>
       <doc:scenario>
@@ -12725,7 +12757,8 @@ var ngValueDirective = function() {
          }
        </script>
        <div ng-controller="Ctrl">
-         Enter name: <input type="text" ng-model="name"><br>
+         Enter name: <input type="text" ng-model="name">
+
          Hello <span ng-bind="name"></span>!
        </div>
      </doc:source>
@@ -12772,8 +12805,10 @@ var ngBindDirective = ngDirective(function(scope, element, attr) {
          }
        </script>
        <div ng-controller="Ctrl">
-        Salutation: <input type="text" ng-model="salutation"><br>
-        Name: <input type="text" ng-model="name"><br>
+        Salutation: <input type="text" ng-model="salutation">
+
+        Name: <input type="text" ng-model="name">
+
         <pre ng-bind-template="{{salutation}} {{name}}!"></pre>
        </div>
      </doc:source>
@@ -12909,7 +12944,8 @@ function classDirective(name, selector) {
      <file name="index.html">
       <input type="button" value="set" ng-click="myVar='my-class'">
       <input type="button" value="clear" ng-click="myVar=''">
-      <br>
+      
+
       <span ng-class="myVar">Sample Text</span>
      </file>
      <file name="style.css">
@@ -13781,7 +13817,8 @@ var ngNonBindableDirective = ngDirective({ terminal: true, priority: 1000 });
                         when="{'0': 'Nobody is viewing.',
                                'one': '1 person is viewing.',
                                'other': '{} people are viewing.'}">
-          </ng-pluralize><br>
+          </ng-pluralize>
+
 
           <!--- Example with offset --->
           With Offset(2):
@@ -14346,7 +14383,8 @@ var ngSwitchDefaultDirective = ngDirective({
          });
        </script>
        <div ng-controller="Ctrl">
-         <input ng-model="title"><br>
+         <input ng-model="title">
+
          <textarea ng-model="text"></textarea> <br/>
          <pane title="{{title}}">{{text}}</pane>
        </div>
@@ -14665,7 +14703,8 @@ var scriptDirective = ['$templateCache', function($templateCache) {
           </ul>
           <hr/>
           Color (null not allowed):
-          <select ng-model="color" ng-options="c.name for c in colors"></select><br>
+          <select ng-model="color" ng-options="c.name for c in colors"></select>
+
 
           Color (null allowed):
           <span  class="nullable">
@@ -14679,7 +14718,8 @@ var scriptDirective = ['$templateCache', function($templateCache) {
           </select><br/>
 
 
-          Select <a href ng-click="color={name:'not in list'}">bogus</a>.<br>
+          Select <a href ng-click="color={name:'not in list'}">bogus</a>.
+
           <hr/>
           Currently selected: {{ {selected_color:color}  }}
           <div style="border:solid 1px black; height:20px"
