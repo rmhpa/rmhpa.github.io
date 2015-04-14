@@ -1,0 +1,241 @@
+---
+layout: weather
+title: Experimental Forecast
+permalink: /experimental-forecast/
+---
+
+<script charset="utf-8">
+
+</script>
+
+<h4>Forecast Format</h4>
+<ul>
+  <li>NWS Forecast Banners</li>
+  <li>RUC Skew T</li>
+  <li>TAFS (rendered from json or XML format)</li>
+  <li> taf url: http://www.aviationweather.gov/gis/scripts/TafJSON.php?bbox=-110,35,-103,40 </li>
+</ul>
+
+<h4>Current Conditions</h4>
+<ul>
+  <li>Custom Weathermap - Forecast.io or Leaflet???</li>
+  <li>lookout - Eldorado </li>
+  <li>villa winds at hayden pass</li>
+  <li>windy.ty??</li>
+  <li>TFRs </li>
+  <li>Sever Weather Alerts</li>
+  <li>Metars</li>
+
+  <li>big picture? wind history - http://windhistory.com/map.html#10.00/39.9348/-105.0195 or http://windhistory.com/station.html?KBJC</li>
+
+<li>link to vfr map and/or skyvector http://vfrmap.com/?type=vfrc&lat=39.9167&lon=-105.1167&zoom=10</li>
+
+</ul>
+<hr>
+<hr>
+
+<div class="row">
+
+  {% raw %}
+  <div ng-app='forecastIoApp' ng-controller='forecastIoAppCtrlr'>
+
+
+
+    <div ng-repeat="f in forecast ">
+
+      Windspeed: {{f.windSpeed}}
+      Direction: {{f.windBearing}}
+
+      <pre>{{ f | json }}</pre>
+
+    </div>
+
+    <!-- Debug Raw Tafs -->
+    <pre>{{ forecast | json }}</pre>
+
+  </div>
+
+
+
+  {% endraw %}
+</div>
+
+
+<div class="row">
+
+
+<h4>Leaflet.js Hello World example</h4>
+<div id="map" style"width:600px; height:400px"  >
+
+</div>
+<script charset="utf-8">
+// var map = L.map('map').setView([39.7509, -105.2337], 13);
+// L.tileLayer('http://{s}.tiles.mapbox.com/v3/MapID/{z}/{x}/{y}.png', {
+//   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+//   maxZoom: 18
+// }).addTo(map);
+
+
+var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18, attribution: '[insert correct attribution here!]', imageLoadingUrl: '/images/owmloading.gif', appId: '7cb1ceb9a2fdbd639e536bb836710367' });
+
+  var clouds = L.OWM.clouds({showLegend: false, opacity: 0.5});
+  var wind = L.OWM.wind();
+  var precipitation = L.OWM.precipitation();
+  var pressure = L.OWM.pressure();
+  var city = L.OWM.current({intervall: 15, lang: 'de'});
+
+  var map = L.map('map', { center: new L.LatLng(39.75, -105.20), zoom: 10, layers: [osm] });
+  var baseMaps = { "OSM Standard": osm };
+  var overlayMaps = { "Clouds": clouds, "Cities": city, "Wind": wind, "Precipitation": precipitation, "Pressure": pressure};
+  var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+// hello world example
+//var map = L.map('map').setView([39.75, -105.20], 13);
+
+L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+  maxZoom: 18,
+  attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+  '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+  'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+  id: 'examples.map-i875mjb7'
+}).addTo(map);
+
+
+ // L.marker([39.7509, -105.2337]).addTo(map)
+ // .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+
+ // open weathermap
+
+
+
+// L.circle([51.508, -0.11], 500, {
+//   color: 'red',
+//   fillColor: '#f03',
+//   fillOpacity: 0.5
+// }).addTo(map).bindPopup("I am a circle.");
+
+// L.polygon([
+//   [51.509, -0.08],
+//   [51.503, -0.06],
+//   [51.51, -0.047]
+//   ]).addTo(map).bindPopup("I am a polygon.");
+
+
+  // var popup = L.popup();
+  //
+  // function onMapClick(e) {
+  //   popup
+  //   .setLatLng(e.latlng)
+  //   .setContent("You clicked the map at " + e.latlng.toString())
+  //   .openOn(map);
+  // }
+  //
+  // map.on('click', onMapClick);
+
+
+
+</script>
+</div>
+
+
+
+<!-- <span style="font-size: 1.75em;-ms-transform: rotate(25deg);-webkit-transform: rotate(25deg);transform: rotate(25deg); ">&#10147;</span>
+
+
+<div style="font-size: 10em; ">&#10147; </div> -->
+
+<!-- <div style="-webkit-transform: rotate(-90deg);">&#10147; </div> -->
+
+{% raw %}
+<div ng-app='tafApp' ng-controller='tafCtrlr'>
+
+  <div ng-repeat="taf in tafs | filter:isKBJC">
+    <div> {{taf.properties.site }} ({{taf.properties.id}})</div>
+    <div>Wind Speed: {{taf.properties.wspd }}</div>
+    <div>Wind Direction: {{taf.properties.wdir }}   </div>
+    <!-- <img src="http://www.arvadamodelers.com/wp-content/themes/aam/images/compass.png"
+    style="-ms-transform: rotate(120deg);-webkit-transform: rotate(120deg);transform: rotate(120deg); "
+    /> -->
+
+
+    <img src="/images/arrow.svg" height="80" width="20"
+     style="-ms-transform: rotate({{taf.properties.wdir}}deg);-webkit-transform: rotate({{taf.properties.wdir}}deg);transform: rotate({{taf.properties.wdir}}deg);"/>
+
+     <!-- <img src="/images/arrow.svg" height="80" width="20"
+     style="-ms-transform: rotate(-360deg);-webkit-transform: rotate(-360deg);transform: rotate(-360deg);"/> -->
+
+    <div>Valid Time From: {{taf.properties.validTimeFrom }}</div>
+    <div>Valid Time To: {{taf.properties.validTimeTo }}</div>
+
+
+  </div>
+
+<hr>
+<!-- Debug Raw Tafs -->
+<pre>{{ tafs | json }}</pre>
+
+
+
+
+</div>
+{% endraw %}
+
+<h3>Lookout</h3>
+
+<div class="row">
+  <div class="span6" style="float: none; margin: 0 auto;">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <img src="http://forecast.weather.gov/meteograms/Plotter.php?lat=39.7509&lon=-105.2337&wfo=BOU&zcode=COZ039&gset=15&gdiff=3&unit=0&tinfo=MY7&ahour=0&pcmd=11011000000000000000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6" alt="NWS Forecast" />
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+<h3>Boulder</h3>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <img src="http://forecast.weather.gov/meteograms/Plotter.php?lat=39.2308&lon=-108.8555&wfo=GJT&zcode=COZ006&gset=18&gdiff=10&unit=0&tinfo=MY7&ahour=0&pcmd=11011000000000000000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6" alt="NWS Forecast" />
+  </div>
+</div>
+
+<h3>Villa Grove</h3>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <img src="http://forecast.weather.gov/meteograms/Plotter.php?lat=38.2453&lon=-105.8947&wfo=PUB&zcode=COZ006&gset=18&gdiff=10&unit=0&tinfo=MY7&ahour=0&pcmd=11011000000000000000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6" alt="NWS Forecast" />
+
+    <div class="panel-footer">NWS Forecast</div>
+  </div>
+
+</div>
+
+<h3>Vail Valley</h3>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <img src="http://forecast.weather.gov/meteograms/Plotter.php?lat=39.6936&lon=-106.6617&wfo=GJT&zcode=COZ008&gset=18&gdiff=10&unit=0&tinfo=MY7&ahour=0&pcmd=11011000000000000000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6" alt="NWS Forecast" />
+  </div>
+</div>
+
+<h3>Williams</h3>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <img src="http://forecast.weather.gov/meteograms/Plotter.php?lat=39.9009&lon=-106.2834&wfo=BOU&zcode=COZ032&gset=15&gdiff=3&unit=0&tinfo=MY7&ahour=0&pcmd=00001111000000000000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6" alt="NWS Forecast" />
+  </div>
+</div>
+
+<h3>Western Slope</h3>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <img src="http://forecast.weather.gov/meteograms/Plotter.php?lat=39.2308&lon=-108.8555&wfo=GJT&zcode=COZ006&gset=18&gdiff=10&unit=0&tinfo=MY7&ahour=0&pcmd=11011000000000000000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6" alt="NWS Forecast" />
+  </div>
+</div>

@@ -1,14 +1,29 @@
 ---
 layout: weather
 title: Experimental Weather Layout
-permalink: /Experimental-Weather-Layout/
+permalink: /experimental-weather-big-picture/
 ---
 
+<!-- The weather layout uses the container fluid for a "dashboard feel" -->
+
+
+<h4>Todo:</h4>
+
+ <ul>
+   <li>ECMWF Forecast Links </li>
+   <li>http://meteocentre.com/analyses/gem/explorateur_analyse.php?stn=UV250&hh=0&map=na&stn2=UV10m&hh2=0&comp=1&fixhh=1&lang=en</li>
+   <li>http://meteocentre.com/analyses/map.php?lang=en&map=us_conus&area=us&size=large</li>
+   <li>http://meteocentre.com/models/explorateur.php?mod=ecmwf&run=12&stn=TT850&hh=000&map=na&stn2=PNM&run2=12&mod2=ecmwf&hh2=000&comp=1&fixhh=1&lang=en&yyyy=latest&mm=latest&dd=latest&mode=latest&stn2_type=prog&date_type=dateo</li>
+ </ul>
 
 
 <div class"row">
   <span class="octicon octicon-device-desktop"></span>
   <span class="octicon octicon-flame"></span>
+  <span class="octicon octicon-beer"></span>
+
+  <!-- for 32px icons -->
+  <span class="mega-octicon octicon-beer"></span>
 </div>
 
   <div class="row">
@@ -16,7 +31,9 @@ permalink: /Experimental-Weather-Layout/
       <div class="thumbnail">
         <div class="caption">
           <h3>Jet Stream</h3>
-        </div><br><br>
+        </div>
+
+
         <a href="http://squall.sfsu.edu/crws/jetstream.html" target="_blank">
         <img src="http://squall.sfsu.edu/gif/jetstream_init_00.gif" alt="Jet Stream US" />
         </a>
@@ -92,6 +109,28 @@ permalink: /Experimental-Weather-Layout/
 
       <hr>
 
+      <div class="thumbnail">
+        <div class="caption">
+          Visible Water Vapor
+        </div>
+        <iframe src="http://weather.rap.ucar.edu/satellite/displaySat.php?region=DEN&itype=wv&size=large&endDate=20150103&endTime=-1&duration=12"
+        height="1000"
+        width="1200" >
+
+      </iframe></div>
+
+
+      <div class="thumbnail">
+        <div class="caption">
+          Colorado Avalanche Information Center - Custom WRF Forecast
+        </div>
+        <iframe src="http://avalanche.state.co.us/forecasts/weather/model-forecasts/" width="1200" height="500"></iframe>
+      </div>
+
+
+
+      <hr>
+
       <!-- <div class="thumbnail">
         <iframe src="http://weather.rap.ucar.edu/satellite/displaySat.php?region=DEN&itype=wv&size=large&endDate=20150103&endTime=-1&duration=12"
         height="500"
@@ -164,16 +203,7 @@ myApp.controller('DemoController', function($scope) {
     <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
   </div>
 </div> -->
-<hr>
 
-
-<h2>Visible Water Vapor</h2>
-
-<div><iframe src="http://weather.rap.ucar.edu/satellite/displaySat.php?region=DEN&itype=wv&size=large&endDate=20150103&endTime=-1&duration=12"
-height="1000"
-width="1200" >
-
-</iframe></div>
 
 
 <hr>
