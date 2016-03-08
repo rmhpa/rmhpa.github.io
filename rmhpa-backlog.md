@@ -1,3 +1,21 @@
+# Major issues -
+
+Emails
+
+Online Signup - Try Right Signature
+
+Other option is to deploy rest service
+
+can you configure DNS to look at ports?  expose forum on a different port?
+
+Try out MEAN Stack
+  Authenticate using OAuth to members only page.
+  Members Only Page
+
+  Grid backed by Google Docs to display members.
+
+  Proxy for forum??  -- redirect for forum?
+
 # Bugs
 
 Add Members only to Menu
@@ -7,13 +25,6 @@ Fix CSS on RMHPA Dropdown.  Make the 'triangle' bigger.
 Members Page
 
 Do we want to load the Flocker articles if we have them.
-
-Post Jake's
-
-
-Windshimer - put reserve repack image on front page.
-
-Add Windshiermer's image to hanggliding schools.  
 
 H2 content -
 
