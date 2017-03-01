@@ -1,3 +1,34 @@
+Weather Values - Every pilot is responsible for a personal forecast.
+
+
+New Weather tutorial
+
+Basic
+Advanced - more detailed information with multiple sources of information
+
+Regional Weather Pages -
+
+Front Range (Denver Boulder)
+Villa Grove
+Vail
+
+Interesting URLs:
+GEOS Weather Satlite
+
+http://www.goes-r.gov/products/overview.html
+http://www.goes-r.gov/products/baseline-derived-motion-winds.html
+http://www.goes.noaa.gov/pacus.html
+http://www.ssd.noaa.gov/goes/east/cp.html
+http://www.ssd.noaa.gov/goes/east/cp/h5-mloop-ir2.html
+http://www.ssd.noaa.gov/imagery/weus.html
+http://www.ospo.noaa.gov/Products/atmosphere/wind.html
+http://www.ospo.noaa.gov/Products/atmosphere/hdwinds/goes.html?satellite=W&maploc=NH&maptype=IR&interval=1
+http://www.ospo.noaa.gov/Products/atmosphere/hdwinds/goes.html
+http://www.ssd.noaa.gov/goes/west/weus/wv.jpg
+
+
+
+
 Sorry about your heel bone. I hope it will heal quickly. I am working on WX forecasting, Current conditions, a WX tutorial, and flying site specific wx conditions to look for. As far as functionality goes, I will need:
 
 - Imported loops of satellite images and numerical models from the http://weather.rap.ucar.edu site.
