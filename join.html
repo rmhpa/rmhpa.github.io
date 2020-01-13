@@ -1,52 +1,77 @@
 ---
-layout: page
-title: Join Our Club
+layout: page-b4
+title: 2020 Membership
 permalink: /join/
 ---
 
 <div class="container">
-
-    <p>Your club membership dues help to protect and preserve flying sites for all of us.</p>
-
-    <p>Please use the links below to enter your personal information electronically.</p>
-
-    <h4>Follow 3 steps to renew/join RMHPA in 2019.</h4>
-
-   <ul class="list-group">
-      <li class="list-group-item">
-        <strong>1. <a href="https://docs.google.com/forms/d/1u2VyxNN4ECZ4o3Lkgar2uk7ahgW_3czW7QoQeexk4RY/viewform" target="_blank">RHMPA Online Membership Form</a></strong>
-      </li>
-      <li class="list-group-item">
-        <strong>2. Lookout Pilots</strong> - <a target="_blank" href="https://signrequest.com/r/sign-template/d79c16bc6d62ae8092c3d30ce2da9806edd442d0bd3fd1fa1729e55e08a20e41/?p=1&no_phone=1"><strong>Sign the waiver.</strong></a>
-      </li>
-</ul>
-
-
-
-<h4>Fees</h4>
   <ul class="list-group">
-      <li class="list-group-item"><strong>3. Annual dues</strong> are <strong>$50</strong> and are renewed each January</li>
-      <li class="list-group-item"><strong>Visiting pilots</strong> (less than 5 visits) may waive the fee but must complete the membership form and Jefferson County Waiver (if flying Lookout).</li>
+      <li class="list-group-item"><strong>Annual dues</strong> are <strong>$50</strong> and are renew ed each January</li>
+      <li class="list-group-item"><strong>Visiting pilots</strong> (less than 5 visits) don't pay annual dues.</li>
+      <li class="list-group-item"><strong>Lookout Pilots</strong> - <a target="_blank" href="https://signrequest.com/#/sign-template/ea19a5e5d1b0babe38fbd544380388f6fb967abe60f58247c3c916a451fe0cdc/?p=1&no_phone=1"><strong>Sign the 2020 Jeffco Waiver.</strong></a>
+</li>
+      <li class="list-group-item">USHPA membership is required.</li>
+      <li class="list-group-item">Please renew your membership or join RMHPA using the form and payment option below.</li>
     </ul>
 
-<p>If you need an alternative method of payment - Contact the <a href="mailto:treasurer@rmhpa.org">Treasurer</a>via email.</p>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdcWfbYF4xaVbryJDnZsgf7JQ-zp1mFZyQKlk_xTgPYALSGVQ/viewform?embedded=true" width="640" height="3427" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
-    <h4>Electronic Payment</h4>
 
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="RCYXB2F4MG9MY">
-    <table>
-    <tr><td><input type="hidden" name="on0" value="Name">Name</td></tr><tr><td><input type="text" name="os0" maxlength="200"></td></tr>
-    <tr><td><input type="hidden" name="on1" value="USHPA Number">USHPA Number</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
-    </table>
-    …
+    <h4>Fees</h4>
+      <ul class="list-group">
+          <li class="list-group-item"><strong>Annual dues</strong> are <strong>$50</strong> and are renewed each January</li>
+          <li class="list-group-item"><strong>Visiting pilots</strong> (less than 5 visits) may waive the fee but must complete the membership form and Jefferson County Waiver (if flying Lookout).</li>
+        </ul>
 
-    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form>
-    <p>&nbsp;</p>
+    <p>If you need an alternative method of payment - Contact the <a href="mailto:treasurer@rmhpa.org">Treasurer</a> via email.</p>
 
-<p><a href="https://dola.colorado.gov/sar/cardPurchase.jsf" target="_blank">CORSAR CARD?  Yes!</a></p>
+        <h4>Electronic Payment</h4>
 
-    </div><!-- /.container -->
+        <!-- Load Stripe.js on your website. -->
+        <script src="https://js.stripe.com/v3"></script>
+
+        <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+        <!-- <button
+          style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+          id="checkout-button-sku_GUDYvY7SzJ668E"
+          role="link"
+        > -->
+        <button id="checkout-button-sku_GUDYvY7SzJ668E"
+        class="btn btn-primary" role="link">
+          Pay your Dues - $50
+        </button>
+
+        <!-- <div id="error-message">There was an error processing your payment.</div> -->
+
+        <script>
+        (function() {
+          var stripe = Stripe('pk_live_uJKvwL5gdiUrrJzJVrs9N5ZD001GkCPyUb');
+
+          var checkoutButton = document.getElementById('checkout-button-sku_GUDYvY7SzJ668E');
+          checkoutButton.addEventListener('click', function () {
+            // When the customer clicks on the button, redirect
+            // them to Checkout.
+            stripe.redirectToCheckout({
+              items: [{sku: 'sku_GUDYvY7SzJ668E', quantity: 1}],
+
+              // Do not rely on the redirect to the successUrl for fulfilling
+              // purchases, customers may not always reach the success_url after
+              // a successful payment.
+              // Instead use one of the strategies described in
+              // https://stripe.com/docs/payments/checkout/fulfillment
+              successUrl: 'https://www.rmhpa.org/success',
+              cancelUrl: 'https://www.rmhpa.org/canceled',
+            })
+            .then(function (result) {
+              if (result.error) {
+                // If `redirectToCheckout` fails due to a browser or network
+                // error, display the localized error message to your customer.
+                var displayError = document.getElementById('error-message');
+                displayError.textContent = result.error.message;
+              }
+            });
+          });
+        })();
+        </script>
+
+        <br><br><br>
