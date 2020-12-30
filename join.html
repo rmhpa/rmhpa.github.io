@@ -1,6 +1,6 @@
 ---
 layout: page-b4
-title: 2020 Membership
+title: 2021 Membership
 permalink: /join/
 ---
 
@@ -20,8 +20,7 @@ permalink: /join/
       <li class="list-group-item"><strong>Visiting pilots</strong> (less than 5 visits) may waive the fee but must complete the membership form and Jefferson County Waiver (if flying Lookout).</li>
     </ul>
 
-
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdcWfbYF4xaVbryJDnZsgf7JQ-zp1mFZyQKlk_xTgPYALSGVQ/viewform?embedded=true" width="640" height="3427" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdRTGleP2W7dlTkaeoQ7Xv9sqowIKzgoc_9JrPA6CAn9V1R6A/viewform?embedded=true" width="640" height="3979" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
 
     <h4>Fees</h4>
@@ -34,51 +33,71 @@ permalink: /join/
 
         <h4>Electronic Payment</h4>
 
+
+
+
+
+
+<!-- new stuff 2021 -->
+
+
         <!-- Load Stripe.js on your website. -->
-        <script src="https://js.stripe.com/v3"></script>
+<script src="https://js.stripe.com/v3"></script>
 
-        <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
-        <!-- <button
-          style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
-          id="checkout-button-sku_GUDYvY7SzJ668E"
-          role="link"
-        > -->
-        <button id="checkout-button-sku_GUDYvY7SzJ668E"
-        class="btn btn-primary" role="link">
-          Pay your Dues - $50
-        </button>
+<!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
 
-        <!-- <div id="error-message">There was an error processing your payment.</div> -->
+<button id="checkout-button-price_1I3AG2CtDkyOuEVHqUJ2oyj2"
+class="btn btn-primary" role="link" type="button">
+  Pay your Dues - $50
+</button>
 
-        <script>
-        (function() {
-          var stripe = Stripe('pk_live_uJKvwL5gdiUrrJzJVrs9N5ZD001GkCPyUb');
+<!-- <button
+  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+  id="checkout-button-price_1I3AG2CtDkyOuEVHqUJ2oyj2"
+  role="link"
+  type="button"
+>
+  Checkout
+</button> -->
 
-          var checkoutButton = document.getElementById('checkout-button-sku_GUDYvY7SzJ668E');
-          checkoutButton.addEventListener('click', function () {
-            // When the customer clicks on the button, redirect
-            // them to Checkout.
-            stripe.redirectToCheckout({
-              items: [{sku: 'sku_GUDYvY7SzJ668E', quantity: 1}],
+<!-- <div id="error-message">error</div> -->
 
-              // Do not rely on the redirect to the successUrl for fulfilling
-              // purchases, customers may not always reach the success_url after
-              // a successful payment.
-              // Instead use one of the strategies described in
-              // https://stripe.com/docs/payments/checkout/fulfillment
-              successUrl: 'https://www.rmhpa.org/success',
-              cancelUrl: 'https://www.rmhpa.org/canceled',
-            })
-            .then(function (result) {
-              if (result.error) {
-                // If `redirectToCheckout` fails due to a browser or network
-                // error, display the localized error message to your customer.
-                var displayError = document.getElementById('error-message');
-                displayError.textContent = result.error.message;
-              }
-            });
-          });
-        })();
-        </script>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_uJKvwL5gdiUrrJzJVrs9N5ZD001GkCPyUb');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1I3AG2CtDkyOuEVHqUJ2oyj2');
+  checkoutButton.addEventListener('click', function () {
+    /*
+     * When the customer clicks on the button, redirect
+     * them to Checkout.
+     */
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1I3AG2CtDkyOuEVHqUJ2oyj2', quantity: 1}],
+      mode: 'subscription',
+      /*
+       * Do not rely on the redirect to the successUrl for fulfilling
+       * purchases, customers may not always reach the success_url after
+       * a successful payment.
+       * Instead use one of the strategies described in
+       * https://stripe.com/docs/payments/checkout/fulfill-orders
+       */
+      successUrl: 'https://www.rmhpa.org/success',
+      cancelUrl: 'https://www.rmhpa.org/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        /*
+         * If `redirectToCheckout` fails due to a browser or network
+         * error, display the localized error message to your customer.
+         */
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
 
         <br><br><br>
