@@ -18,86 +18,74 @@ permalink: /join/
   <ul class="list-group">
       <li class="list-group-item"><strong>Annual dues</strong> are <strong>$50</strong> and are renewed each January.  Dues renew automatically each year.</li>
       <li class="list-group-item"><strong>Visiting pilots</strong> (less than 5 visits) may waive the fee but must complete the membership form and Jefferson County Waiver (if flying Lookout).</li>
+      <li class="list-group-item">If you need an alternative method of payment - Contact the <a href="mailto:treasurer@rmhpa.org">Treasurer</a> via email.</li>
     </ul>
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdRTGleP2W7dlTkaeoQ7Xv9sqowIKzgoc_9JrPA6CAn9V1R6A/viewform?embedded=true" width="640" height="3979" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <h4>Electronic Payment</h4>
 
-<div class="container">
 
+    <!-- new stuff 2021 -->
+
+            <!-- Load Stripe.js on your website. -->
+    <script src="https://js.stripe.com/v3"></script>
+
+    <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+
+    <button id="checkout-button-price_1I3AG2CtDkyOuEVHqUJ2oyj2"
+    class="btn btn-primary" role="link" type="button">
+      Pay your Dues - $50
+    </button>
+
+    <!-- <button
+      style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+      id="checkout-button-price_1I3AG2CtDkyOuEVHqUJ2oyj2"
+      role="link"
+      type="button"
+    >
+      Checkout
+    </button> -->
+
+    <!-- <div id="error-message">error</div> -->
+
+
+    <script>
+    (function() {
+      var stripe = Stripe('pk_live_uJKvwL5gdiUrrJzJVrs9N5ZD001GkCPyUb');
+
+      var checkoutButton = document.getElementById('checkout-button-price_1I3AG2CtDkyOuEVHqUJ2oyj2');
+      checkoutButton.addEventListener('click', function () {
+        /*
+         * When the customer clicks on the button, redirect
+         * them to Checkout.
+         */
+        stripe.redirectToCheckout({
+          lineItems: [{price: 'price_1I3AG2CtDkyOuEVHqUJ2oyj2', quantity: 1}],
+          mode: 'subscription',
+          /*
+           * Do not rely on the redirect to the successUrl for fulfilling
+           * purchases, customers may not always reach the success_url after
+           * a successful payment.
+           * Instead use one of the strategies described in
+           * https://stripe.com/docs/payments/checkout/fulfill-orders
+           */
+          successUrl: 'https://www.rmhpa.org/success',
+          cancelUrl: 'https://www.rmhpa.org/canceled',
+        })
+        .then(function (result) {
+          if (result.error) {
+            /*
+             * If `redirectToCheckout` fails due to a browser or network
+             * error, display the localized error message to your customer.
+             */
+            var displayError = document.getElementById('error-message');
+            displayError.textContent = result.error.message;
+          }
+        });
+      });
+    })();
+    </script>
 </div>
 
+<br><br><br>
 
-    <h4>Fees</h4>
-      <ul class="list-group">
-          <li class="list-group-item"><strong>Annual dues</strong> are <strong>$50</strong> and are renewed each January</li>
-          <li class="list-group-item"><strong>Visiting pilots</strong> (less than 5 visits) may waive the fee but must complete the membership form and Jefferson County Waiver (if flying Lookout).</li>
-        </ul>
-
-    <p>If you need an alternative method of payment - Contact the <a href="mailto:treasurer@rmhpa.org">Treasurer</a> via email.</p>
-
-        <h4>Electronic Payment</h4>
-
-
-<!-- new stuff 2021 -->
-
-
-        <!-- Load Stripe.js on your website. -->
-<script src="https://js.stripe.com/v3"></script>
-
-<!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
-
-<button id="checkout-button-price_1I3AG2CtDkyOuEVHqUJ2oyj2"
-class="btn btn-primary" role="link" type="button">
-  Pay your Dues - $50
-</button>
-
-<!-- <button
-  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
-  id="checkout-button-price_1I3AG2CtDkyOuEVHqUJ2oyj2"
-  role="link"
-  type="button"
->
-  Checkout
-</button> -->
-
-<!-- <div id="error-message">error</div> -->
-
-
-<script>
-(function() {
-  var stripe = Stripe('pk_live_uJKvwL5gdiUrrJzJVrs9N5ZD001GkCPyUb');
-
-  var checkoutButton = document.getElementById('checkout-button-price_1I3AG2CtDkyOuEVHqUJ2oyj2');
-  checkoutButton.addEventListener('click', function () {
-    /*
-     * When the customer clicks on the button, redirect
-     * them to Checkout.
-     */
-    stripe.redirectToCheckout({
-      lineItems: [{price: 'price_1I3AG2CtDkyOuEVHqUJ2oyj2', quantity: 1}],
-      mode: 'subscription',
-      /*
-       * Do not rely on the redirect to the successUrl for fulfilling
-       * purchases, customers may not always reach the success_url after
-       * a successful payment.
-       * Instead use one of the strategies described in
-       * https://stripe.com/docs/payments/checkout/fulfill-orders
-       */
-      successUrl: 'https://www.rmhpa.org/success',
-      cancelUrl: 'https://www.rmhpa.org/canceled',
-    })
-    .then(function (result) {
-      if (result.error) {
-        /*
-         * If `redirectToCheckout` fails due to a browser or network
-         * error, display the localized error message to your customer.
-         */
-        var displayError = document.getElementById('error-message');
-        displayError.textContent = result.error.message;
-      }
-    });
-  });
-})();
-</script>
-
-        <br><br><br>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdRTGleP2W7dlTkaeoQ7Xv9sqowIKzgoc_9JrPA6CAn9V1R6A/viewform?embedded=true" width="640" height="3979" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
