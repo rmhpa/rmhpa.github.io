@@ -1,0 +1,12 @@
+Field Names
+
+2019
+Timestamp	Email Address	First Name	Last Name	Birth Date	Phone Number	Mailing Address	City	State	Zip Code	Membership Directory Consent	InReach Address	Emergency Contact 1 Name	Emergency Contact 1 Phone	Emergency Contact 2 Name	Emergency Contact 2 Phone	Medical Information	GEOS	GEOS Expiration	Emergency Medical Database Consent	USHPA #	USHPA Expiration	Pilot Ratings [Hang Gliding - H]	Pilot Ratings [Paragliding - P]	Pilot Ratings [Mini Wing - M]	Pilot Ratings [Tandem - T]	Special Skills	Membership Type	Payment method	Emergency Contact 1 Relation	Emergency Contact 2 Relation	Paid
+
+2018
+Timestamp	Email Address	First Name	Last Name	Home Address 	City	State	Zip	Phone Number	USHPA Number 	USHPA Member Expiration Date	Hang Gliding Rating	Paragliding Rating	Mini Wing Rating 	Tandem Rating	Emergency Contact #1 Name	Emergency Contact #1 Phone	Emergency Contact #2 Name	Emergency Contact #2 Phone	Colorado CORSAR Card Number (Strongly recommended)	Colorado CORSAR Expiration Date	Visiting Pilot? 	Local Pilot? 	Student (P0, P1) 	Payment method you intend to use for your dues.   Pay>> http://www.rmhpa.org/join                                                                     	Lookout Waiver Signed? 											
+
+Consider 2 forms.  1 for payment, 1 for membership registration
+
+2020 Sign Up Fields
+Timestamp Email-Address First-Name Last-Name Home-Address City State Zip Phone-Number USHPA-Number USHPA-Member-Expiration-Date USHPA-Rating Visiting-Pilot Emergency-Contact-1-Name Emergency-Contact-1-Phone Emergency-Contact-2-Name Emergency-Contact-2-Phone Lookout-Waiver-Signed
